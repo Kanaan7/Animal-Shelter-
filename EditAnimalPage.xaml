@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Assignment2._1.EditAnimalPage"
+             Title="EditAnimalPage">
+    <StackLayout Padding="20">
+        <Label Text="Edit Animal" FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+        <Entry x:Name="NameEntry" Placeholder="Name" />
+        <Picker x:Name="AnimalTypePicker" Title="Animal Type" />
+        <Entry x:Name="AgeEntry" Placeholder="Age" />
+        <Entry x:Name="GenderEntry" Placeholder="Gender" />
+        <Entry x:Name="DescriptionEntry" Placeholder="Description" />
+        <Button Text="Save" Clicked="OnSaveClicked" HorizontalOptions="Center" />
+    </StackLayout>
+</ContentPage>
