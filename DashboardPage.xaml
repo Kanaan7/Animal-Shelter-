@@ -1,37 +1,103 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Assignment2._1.DashboardPage"
-             Title="DashboardPage">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x ="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Assignment2._1"
+    x:Class="Assignment2._1.DashboardPage"
+    Title="Animal Shelter"
+    BackgroundColor="{StaticResource White}">
 
-    <ScrollView>
-        <StackLayout Padding="20" HorizontalOptions="FillAndExpand">
-            <Label Text="Animal Shelter Dashboard" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+ 
+    <Grid RowDefinitions="*, Auto" ColumnDefinitions="*" Padding="16" RowSpacing="16">
 
-            <!-- CollectionView to display added animals -->
-            <CollectionView x:Name="AnimalsCollectionView"
-                            ItemsSource="{Binding Animals}"
-                            SelectionMode="Single"
-                            SelectionChanged="OnAnimalSelected"
-                            HorizontalOptions="FillAndExpand">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
-                            <!-- Labels to display animal information -->
-                            <Label Text="{Binding Name}" FontSize="18" />
-                            <Label Text="{Binding Type}" FontSize="16" />
-                            <Label Text="{Binding Age, StringFormat='Age: {0}'}" FontSize="16" />
-                            <Label Text="{Binding Gender}" FontSize="16" />
-                            <Label Text="{Binding Description}" FontSize="16" />
+        <!-- ====== Row 0: The scrollable list of animals ====== -->
+        <CollectionView
+            x:Name="AnimalsCollectionView"
+            ItemsSource="{Binding Animals}"
+            Grid.Row="0"
+            SelectionMode="Single"
+            SelectionChanged="OnAnimalSelected"
+            VerticalScrollBarVisibility="Always"
+            VerticalOptions="FillAndExpand"
+            Margin="0,0,0,8">
 
-                            <!-- Edit button -->
-                            <Button Text="Edit" Clicked="OnEditClicked" />
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <!-- Add Animal button -->
-            <Button Text="Add Animal" Clicked="OnAddAnimalClicked" HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ScrollView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        Style="{StaticResource InputFrameStyle}"
+                        Margin="0,4"
+                        Padding="12">
+                        <Grid
+                            ColumnDefinitions="*, Auto"
+                            RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                            RowSpacing="4">
+
+                            <!-- Name -->
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="{Binding Name}"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource Gray900}" />
+
+                            <!-- Edit Button/Icon -->
+                            <Button
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="✏️"
+                                BackgroundColor="Transparent"
+                                FontSize="20"
+                                WidthRequest="36"
+                                HeightRequest="36"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:DashboardPage}}, Path=EditCommand}"
+                                CommandParameter="{Binding Id}" />
+
+                            <!-- Type -->
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="{Binding Type}"
+                                FontSize="16"
+                                TextColor="{StaticResource Gray500}" />
+
+                            <!-- Age -->
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Text="{Binding Age, StringFormat='Age: {0}'}"
+                                FontSize="16"
+                                TextColor="{StaticResource Gray500}" />
+
+                            <!-- Gender -->
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Text="{Binding Gender}"
+                                FontSize="16"
+                                TextColor="{StaticResource Gray500}" />
+
+                            <!-- Description -->
+                            <Label
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                Text="{Binding Description}"
+                                FontSize="14"
+                                TextColor="{StaticResource Gray500}"
+                                LineBreakMode="WordWrap" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- ====== Row 1: The “Add Animal” button at the bottom ====== -->
+        <Button
+            Text="Add Animal"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Clicked="OnAddAnimalClicked"
+            Grid.Row="1"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="End" />
+    </Grid>
 </ContentPage>

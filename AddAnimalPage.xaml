@@ -1,22 +1,102 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Assignment2._1.AddAnimalPage"
-             Title="AddAnimalPage">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Assignment2._1.AddAnimalPage"
+    Title="Add Animal">
 
-    <StackLayout Padding="20">
-        <Label Text="Add Animal" FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-        <Entry x:Name="NameEntry" Placeholder="Name" />
-        <Picker x:Name="AnimalTypePicker" Title="Animal Type">
-            <Picker.Items>
-                <x:String>Cat</x:String>
-                <x:String>Dog</x:String>
-                <x:String>Rabbit</x:String>
-            </Picker.Items>
-        </Picker>
-        <Entry x:Name="AgeEntry" Placeholder="Age" />
-        <Entry x:Name="GenderEntry" Placeholder="Gender" />
-        <Entry x:Name="DescriptionEntry" Placeholder="Description" />
-        <Button Text="Save" Clicked="OnSaveClicked" HorizontalOptions="Center" />
-    </StackLayout>
+    <!-- A ScrollView ensures everything stays visible on smaller screens. -->
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="16">
+
+            <!-- Page Header -->
+            <Label
+                Text=" Add a New Animal"
+                FontSize="28"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <!-- Name Field -->
+            <Frame
+                CornerRadius="8"
+                Padding="12"
+                HasShadow="True"
+                BackgroundColor="#F0F0F0">
+                <Entry
+                    x:Name="NameEntry"
+                    Placeholder="Animal Name"
+                    FontSize="16" />
+            </Frame>
+
+            <!-- Animal Type (free-text) -->
+            <Frame
+                CornerRadius="8"
+                Padding="12"
+                HasShadow="True"
+                BackgroundColor="#F0F0F0">
+                <Entry
+                    x:Name="AnimalTypeEntry"
+                    Placeholder="Animal Type (e.g. Dog, Cat, Guinea Pig…)"
+                    FontSize="16" />
+            </Frame>
+
+            <!-- Age Field -->
+            <Frame
+                CornerRadius="8"
+                Padding="12"
+                HasShadow="True"
+                BackgroundColor="#F0F0F0">
+                <Entry
+                    x:Name="AgeEntry"
+                    Placeholder="Age (in years)"
+                    Keyboard="Numeric"
+                    FontSize="16" />
+            </Frame>
+
+            <!-- Gender Picker -->
+            <Frame
+                CornerRadius="8"
+                Padding="0"
+                HasShadow="True"
+                BackgroundColor="#F0F0F0">
+                <Picker
+                    x:Name="GenderPicker"
+                    Title="Select Gender"
+                    FontSize="16">
+                    <Picker.Items>
+                        <x:String>Male</x:String>
+                        <x:String>Female</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Frame>
+
+            <!-- Description Field -->
+            <Frame
+                CornerRadius="8"
+                Padding="12"
+                HasShadow="True"
+                BackgroundColor="#F0F0F0">
+                <Editor
+                    x:Name="DescriptionEditor"
+                    Placeholder="Brief Description (e.g. “Loves to play fetch!”)"
+                    AutoSize="TextChanges"
+                    FontSize="16"
+                    HeightRequest="100" />
+            </Frame>
+
+            <!-- Save Button -->
+            <Button
+                Text="💾 Save Animal"
+                FontSize="18"
+                CornerRadius="8"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                Padding="12"
+                Clicked="OnSaveClicked"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

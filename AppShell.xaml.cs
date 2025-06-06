@@ -1,9 +1,14 @@
-﻿namespace Assignment2._1;
+﻿using Microsoft.Maui.Controls;
 
-public partial class AppShell : Shell
+namespace Assignment2._1
 {
-	public AppShell()
-	{
-		InitializeComponent();
-	}
+    public partial class AppShell : Shell
+    {
+        public AppShell()
+        {
+            InitializeComponent();
+
+            Routing.RegisterRoute("EditAnimalPage", typeof(EditAnimalPage));
+        }
+    }
 }

@@ -1,12 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Assignment2._1.MainPage">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Assignment2._1.MainPage"
+    Title="Animal Shelter"
+    BackgroundColor="{StaticResource BackgroundWhite}">
 
+    <!-- Center everything vertically and horizontally -->
+    <VerticalStackLayout
+        VerticalOptions="CenterAndExpand"
+        HorizontalOptions="CenterAndExpand"
+        Spacing="24"
+        Padding="20">
 
-    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Label Text="Welcome to Animal Shelter App" FontSize="20" HorizontalOptions="Center" />
-        <Button Text="Go to Dashboard" Clicked="OnGoToDashboardClicked"/>
-    </StackLayout>
+        <!-- Welcome Label -->
+        <Label
+            Text="🐾 Welcome to Animal Shelter App"
+            Style="{StaticResource HeaderLabelStyle}"
+            HorizontalOptions="Center" />
 
+        <!-- “Go to Dashboard” Button using PrimaryButtonStyle -->
+        <Button
+            Text="Go to Dashboard"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Clicked="OnGoToDashboardClicked" />
+    </VerticalStackLayout>
 </ContentPage>

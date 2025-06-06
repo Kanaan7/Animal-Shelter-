@@ -1,11 +1,13 @@
-﻿namespace Assignment2._1;
+﻿using Microsoft.Maui.Controls;
 
-public partial class App : Application
+namespace Assignment2._1
 {
-	public App()
-	{
-		InitializeComponent();
-
-		MainPage = new AppShell();
-	}
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
+            MainPage = new AppShell();
+        }
+    }
 }

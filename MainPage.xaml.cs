@@ -1,16 +1,19 @@
-﻿namespace Assignment2._1;
+﻿using System;
+using Microsoft.Maui.Controls;
 
-public partial class MainPage : ContentPage
-{		
-
-	public MainPage()
-	{
-		InitializeComponent();
-	}
-
-    private async void OnGoToDashboardClicked(object sender, EventArgs e)
+namespace Assignment2._1
+{
+    public partial class MainPage : ContentPage
     {
-        await Navigation.PushAsync(new DashboardPage());
+        public MainPage()
+        {
+            InitializeComponent();
+        }
+
+        private async void OnGoToDashboardClicked(object sender, EventArgs e)
+        {
+            // Navigate to DashboardPage via Shell routing
+            await Shell.Current.GoToAsync("DashboardPage");
+        }
     }
 }
-

@@ -1,15 +1,90 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Assignment2._1.EditAnimalPage"
-             Title="EditAnimalPage">
-    <StackLayout Padding="20">
-        <Label Text="Edit Animal" FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-        <Entry x:Name="NameEntry" Placeholder="Name" />
-        <Picker x:Name="AnimalTypePicker" Title="Animal Type" />
-        <Entry x:Name="AgeEntry" Placeholder="Age" />
-        <Entry x:Name="GenderEntry" Placeholder="Gender" />
-        <Entry x:Name="DescriptionEntry" Placeholder="Description" />
-        <Button Text="Save" Clicked="OnSaveClicked" HorizontalOptions="Center" />
-    </StackLayout>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x ="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Assignment2._1.EditAnimalPage"
+    Title="Edit Animal"
+    BackgroundColor="{StaticResource White}">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="16">
+
+            <!-- Page Header -->
+            <Label
+                Text="Edit Animal"
+                Style="{StaticResource HeaderLabelStyle}" />
+
+            <!-- Name Entry -->
+            <Frame Style="{StaticResource InputFrameStyle}">
+                <Entry
+                    x:Name="NameEntry"
+                    Placeholder="Name"
+                    Style="{StaticResource EntryStyle}" />
+            </Frame>
+
+            <!-- Animal Type Entry -->
+            <Frame Style="{StaticResource InputFrameStyle}">
+                <Entry
+                    x:Name="AnimalTypeEntry"
+                    Placeholder="Animal Type"
+                    Style="{StaticResource EntryStyle}" />
+            </Frame>
+
+            <!-- Age Entry -->
+            <Frame Style="{StaticResource InputFrameStyle}">
+                <Entry
+                    x:Name="AgeEntry"
+                    Placeholder="Age (years)"
+                    Keyboard="Numeric"
+                    Style="{StaticResource EntryStyle}" />
+            </Frame>
+
+            <!-- Gender Picker -->
+            <Frame Style="{StaticResource InputFrameStyle}" Padding="0">
+                <Picker
+                    x:Name="GenderPicker"
+                    Title="Select Gender"
+                    Style="{StaticResource PickerStyle}">
+                    <Picker.Items>
+                        <x:String>Male</x:String>
+                        <x:String>Female</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Frame>
+
+            <!-- Description Editor -->
+            <Frame Style="{StaticResource InputFrameStyle}">
+                <Editor
+                    x:Name="DescriptionEditor"
+                    Placeholder="Description"
+                    AutoSize="TextChanges"
+                    Style="{StaticResource EditorStyle}"
+                    HeightRequest="100" />
+            </Frame>
+
+            <!-- Save and Delete Buttons Side by Side -->
+            <HorizontalStackLayout
+                Spacing="16"
+                HorizontalOptions="Center">
+
+                <!-- Save Button -->
+                <Button
+                    Text="Save"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    WidthRequest="120"
+                    Clicked="OnSaveClicked" />
+
+                <!-- Delete Button (red background, white text) -->
+                <Button
+                    Text="Delete"
+                    BackgroundColor="#C62828"
+                    TextColor="{StaticResource White}"
+                    WidthRequest="120"
+                    Clicked="OnDeleteClicked" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

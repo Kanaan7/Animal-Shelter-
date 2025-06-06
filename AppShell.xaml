@@ -1,14 +1,25 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Shell
     x:Class="Assignment2._1.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:x ="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Assignment2._1"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Disabled"
+    BackgroundColor="{StaticResource White}">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <!-- Dashboard Tab -->
+        <ShellContent
+        Title="Animals"
+        Icon="icon_paw.png"
+        Route="DashboardPage"
+        ContentTemplate="{DataTemplate local:DashboardPage}" />
 
+        <!-- Add Animal Tab -->
+        <ShellContent
+        Title="Add Animal"
+        Icon="icon_add.png"
+        Route="AddAnimalPage"
+        ContentTemplate="{DataTemplate local:AddAnimalPage}" />
+    </TabBar>
 </Shell>
